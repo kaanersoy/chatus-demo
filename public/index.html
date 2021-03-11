@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChatUS - anonym chat app</title>
-    <link rel="stylesheet" href="./style/style.css">
-</head>
-<body>
-    
-    <H1>ChatUS</H1>
-    <a href="/chat.html">chatr</a>
-</body>
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <main id="main">
+      <div class="container">
+        <div class="wrapper">
+          <div class="wrapper__header">
+            <h1>ChatUS</h1>
+            <p>pick a name and join to <span>ChatUS</span></p>
+          </div>
+          <div class="wrapper__loginform">
+            <form onsubmit="login(event)">
+              <div class="form-group">
+                <label for="name">Enter your name👇</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="feeboo🐶"
+                  required
+                />
+              </div>
+              <button type="submit">GO</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./dist/main.js"></script>
+  </body>
 </html>

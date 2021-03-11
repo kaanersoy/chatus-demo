@@ -1,0 +1,18 @@
+$maincolor: #4796ff;
+h1 {
+  color: $maincolor;
+}
+
+section#chat {
+  .wrapper {
+    display: flex;
+    &__sidebar {
+      background-color: #fff;
+      width: calc(100% - 70%);
+    }
+    &__chat {
+      width: calc(100% - 30% - 30px);
+      background-color: #fff;
+    }
+  }
+}
