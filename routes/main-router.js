@@ -1,20 +1,10 @@
 const { checkUser } = require('../middlewares/check-user');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
+const { sessionWithOptions } = require('../helpers/session');
 
 mainRouter = require('express').Router();
 mainRouter.use(cookieParser());
 
-const sessionWithOptions = session({
-  secret: 'ITSASECRETKEY123163516253',
-  name: 'username_cookie',
-  proxy: true,
-});
-
-if (mainRouter.get('env') === 'production') {
-  mainRouter.set('trust proxy', 1);
-  sess.cookie.secure = true;
-}
 mainRouter.use(sessionWithOptions);
 
 mainRouter.post('/', checkUser, (req, res) => {
