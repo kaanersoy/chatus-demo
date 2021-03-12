@@ -14,6 +14,7 @@ function login(e) {
     .then((res) => res.json())
     .then((res) => {
       if (res.redirect) {
+        window.localStorage.setItem('username', username.value);
         window.location.href = '/chat';
       }
     });

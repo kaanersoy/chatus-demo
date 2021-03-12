@@ -29,10 +29,24 @@ app.get('/chat', (req, res) => {
   res.sendFile(__dirname + '/public/chat.html');
 });
 
+let activeUsers = [];
+
 io.on('connection', (socket) => {
-  console.log('HEY');
-  socket.on('chat message', () => {
-    console.log('Messsaj var AMCIK');
+  const user = {
+    username: socket.handshake.auth.username,
+  };
+  activeUsers.push(user);
+  const sendRequest = { usercount: activeUsers.length, users: activeUsers };
+
+  socket.emit('user_count', sendRequest);
+  socket.broadcast.emit('user_count');
+
+  socket.on('disconnect', () => {
+    activeUsers = activeUsers.filter(
+      (user) => user.username == socket.handshake.auth.username
+    );
+    console.log(activeUsers);
+    socket.broadcast.emit('user_count', sendRequest);
   });
 });
 
